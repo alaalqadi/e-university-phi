@@ -1,0 +1,77 @@
+{% extends "account/registration_base.html" %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+{% block registration_content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="account-popup-area signin-popup-box static asda">
+                <div class="account-popup">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="login-msg">
+                            <span>
+                                {% trans 'LOGIN TO CONTINUE' %}
+                            </span>
+                            </div>
+                            <form class="login" method="POST" action="{% url 'account_login' %}">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+
+                                <a class="float-right forgot-password-lnk" href="{% url 'account_reset_password' %}">
+                                    <u>
+                                        {% trans 'Forgot your password?' %}
+                                    </u>
+                                </a><br>
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
+                                {% endif %}
+
+                                <div class="form-group">
+                                    <button class="btn btn-frontend btn-primary btn-login"
+                                            type="submit">{% trans "Login" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row text-right register-prompt-wrapper">
+                        <div class="col-12">
+                            {% get_providers as socialaccount_providers %}
+
+                            {% if socialaccount_providers %}
+                                <p class="text-center py-2">{% trans 'Need an account?' %}</p>
+                                <p>
+                                    {% trans 'Please sign in with one of your existing third party accounts. Or, ' %}<a
+                                        href="{{ site.name }}">{% trans 'sign up' %}</a>
+                                    {% trans 'for a ' %} {{ site_name }} {% trans 'account and sign in below:' %}
+                                </p>
+
+                                <div class="socialaccount_ballot">
+
+                                    <ul class="socialaccount_providers">
+                                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                                    </ul>
+
+                                    <div class="login-or">{% trans 'or' %}</div>
+
+                                </div>
+
+                                {% include "socialaccount/snippets/login_extra.html" %}
+
+                            {% else %}
+                                <p>{% blocktrans %}If you have not created an account yet, then please
+                                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

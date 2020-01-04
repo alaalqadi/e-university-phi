@@ -1,0 +1,18 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+
+{% block site_title %}
+    {% block title %}
+    {% endblock %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {% block registration_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

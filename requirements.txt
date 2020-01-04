@@ -1,5 +1,7 @@
 dj-database-url==0.4.0
-Django==1.9.2
+Django==2.2
 gunicorn==19.4.5
-psycopg2==2.6.1
 whitenoise==2.0.6
+opentok>=2.10.0
+django-allauth==0.39.0
+django-crispy-forms>=1.6.1
