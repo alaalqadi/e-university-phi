@@ -1,3 +1,61 @@
-{% load i18n %}
-<div class="footer">
-</div>
+{% load common_template_tags %}
+<!-- footer-->
+<footer class="footer pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="logo"><strong>University</strong><small>Smart Education Platform</small></div>
+                <ul class="social list-inline">
+                    <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a
+                            href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i
+                            class="fa fa-instagram"></i></a><a href="#" target="_blank"><i
+                            class="fa fa-youtube-play"></i></a><a href="#" target="_blank"><i
+                            class="fa fa-vimeo"></i></a></li>
+                </ul>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos.</p>
+            </div>
+            <div class="col-lg-3">
+                <h4 class="text-thin">Navigation</h4>
+                <div class="navbar-nav ml-auto">
+                    {% if request.user.is_authenticated %}
+                        <div class="nav-item"><a href="{% url 'home' %}" class="nav-link txt1 active">Home <span
+                                class="sr-only">(current)</span></a>
+                        </div>
+                        {% if request.user.userprofile.is_student %}
+                            <div class="nav-item"><a href="{% url 'courses_list' %}" class="nav-link txt1">Courses </a>
+                            </div>
+                        {% endif %}
+                        <div class="nav-item"><a href="{{ request|get_my_courses:"my_courses" }}" class="nav-link txt1">My
+                            Courses </a>
+                        </div>
+                        <div class="nav-item"><a href="{% url 'instructors_list' %}" class="nav-link txt1">Staff </a>
+                        </div>
+
+                        <div class="nav-item"><a href="{% url "account_logout" %}" class="nav-link txt1">Logout</a>
+                        </div>
+                    {% else %}
+                        <div class="nav-item"><a href="{% url "account_signup" %}" class="nav-link txt1">Signup</a>
+                        </div>
+                        <div class="nav-item"><a href="{% url "account_login" %}" class="nav-link txt1">Login</a></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-5 newsletter">
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus </p>
+                <form action="#" class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Enter your email address."
+                               class="form-control">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyrights">
+        <div class="container text-center">
+            <p>&copy; 2018 University</p>
+        </div>
+    </div>
+</footer>

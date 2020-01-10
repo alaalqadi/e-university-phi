@@ -1,0 +1,83 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+    <section class="hero hero-page">
+        <div style="background: url({% static 'img/site-images/courses-banner.jpg' %})"
+             class="hero-banner"></div>
+    </section>
+    <!-- Course Details-->
+    <section class="course-details">
+        <div class="container">
+            <div class="course-details-header">
+                <h2 class="mb-4">{{ course.name }}</h2>
+                <div class="d-flex justify-content-between align-items-start mb-4 flex-column flex-lg-row">
+                    <div class="course-instructor">
+                        <div class="name">
+                            <strong class="text-uppercase">{{ course.get_course_instructor }}</strong><span>{{ course.get_course_department.name }}</span>
+                        </div>
+                    </div>
+                    <div class="course-information d-flex flex-wrap mt-4 mt-lg-0">
+                        <div class="cell border-left-0 border-top-0">
+                            <small>Category</small><strong>{{ course.get_course_department.name }}</strong></div>
+                        <div class="cell border-top-0">
+                            <small>Duration</small><strong>{{ course.get_course_duration }} Days Remaining</strong>
+                        </div>
+                        {% if request.user.userprofile.is_teacher %}
+                            <div class="cell border-top-0 border-right-0">
+                                <small>Students Enrolled</small>
+                                <strong>{{ course.get_enrolled_students_number }}</strong>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="course-price text-left text-lg-right">
+                        {% if request.user.userprofile.is_student %}
+                            <div class="CTAs">
+                                <a href="{% url 'course_enrollment' course.id %}" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                            <div class="CTAs">
+                                <a id="session_start" href="{% url 'session_view' course.id %}" class="btn btn-primary">Enter
+                                    Stream</a>
+                            </div>
+                        {% else %}
+                            <div class="CTAs">
+                                <a href="{% url 'course_edit' course.id %}" class="btn btn-primary">Edit Course</a>
+                            </div>
+                            <div class="CTAs">
+                                <a id="session_start" href="{% url 'session_view' course.id %}" class="btn btn-primary">Start
+                                    Stream</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="course-details-body">
+                <h3>Description</h3>
+                <p>{{ course.description }}</p>
+                <hr class="mt-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <blockquote class="blockquote mt-4 mb-5">
+                            <h5>What you'll learn</h5>
+                            <ul class="list-unstyled mb-4">
+                                <li>
+                                    <pre>{{ course.what_you_will_learn }}</pre>
+                                </li>
+                            </ul>
+                        </blockquote>
+                    </div>
+                    <div class="col-lg-6">
+                        <blockquote class="blockquote mt-4 mb-5">
+                            <h5>Course Requirements</h5>
+                            <ul class="list-unstyled mb-4">
+                                <li>
+                                    <pre>{{ course.requirements }}</pre>
+                                </li>
+                            </ul>
+                        </blockquote>
+                    </div>
+                </div>
+                <hr class="">
+            </div>
+        </div>
+    </section>
+{% endblock %}

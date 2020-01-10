@@ -1,42 +1,11 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block base_content %}
-    <div class="container-fluid">
-        {% include "layout/tools/header.html" %}
+    <div class="container-fluid p-0">
         <div class="content-wrapper">
-            {% block content_header %}
-                <div class="row content-header">
-                    <div class="col">
-                        <h1>{% block site_title %}{{ request.site.name }}{% endblock %}</h1>
-                    </div>
-                    <div class="col text-right">
-                        {% block site_actions %}{% endblock %}
-                    </div>
-                </div>
-                <div class="collapse {% if 'csrfmiddlewaretoken' in request.GET %}show{% endif %}"
-                     id="collapseFilter">
-                    <div class="card card-body">
-                        {% block site_filter %}
-                        {% endblock %}
-                    </div>
-                </div>
-            {% endblock %}
-
-
-
-            {% block pre_content %}{% endblock %}
+            {% include "layout/tools/header.html" %}
             {% block content %}{% endblock %}
-            {% block post_content %}{% endblock %}
-
-        </div>
-    </div>
-    {% block modal %}
-    {% endblock %}
-    <div class="modal fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="addEditModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            </div>
+            {% include 'layout/tools/footer.html' %}
         </div>
     </div>
 {% endblock %}

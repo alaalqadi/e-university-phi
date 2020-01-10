@@ -1,0 +1,59 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Hero Section-->
+    <section class="hero hero-page">
+        <div style="background: url({% static 'img/site-images/staff-banner.jpg' %})"
+             class="hero-banner"></div>
+        <div class="container">
+            <h1>Staff</h1>
+            <div class="row">
+                <p class="col-lg-8">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                    praesentium voluptatum deleniti atque corrupti quos.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Staff Section-->
+    <section class="staff bg-gray">
+        <div class="container">
+            <div class="row">
+                {% for instructor in instructors %}
+                    <div class="col-lg-3">
+                        <div class="staff-member"><img
+                                src="{% static 'img/site-images/teacher-1.jpg' %}"
+                                alt="Joe Denver">
+                            <div class="info">
+                                <h3 class="h5 teacher mb-0">{{ instructor }}</h3>
+                                <span>Instuctor of Computer science</span>
+                            </div>
+                            <div class="overlay d-flex align-items-center justify-content-center">
+                                <div class="overlay-inner">
+                                    <p class="teacher-quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua." </p><a
+                                        href="{% url 'instructor_details' instructor.id %}" class="teacher-name">
+                                    <h3 class="h5 mb-0 teacher">Joe Denver</h3></a><span class="teacher-field">Instuctor of Computer science</span>
+                                    <ul class="social list-inline">
+                                        <li class="list-inline-item"><a href="#" target="_blank"><i
+                                                class="fa fa-envelope"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" target="_blank"><i
+                                                class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" target="_blank"><i
+                                                class="fa fa-video-camera"></i></a></li>
+                                    </ul>
+                                    <p class="teacher-see-profile"><a
+                                            href="{% url 'instructor_details' instructor.id %}"
+                                            class="btn btn-outline-light">See Joe Denver's
+                                        profile </a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <!-- footer-->
+{% endblock %}

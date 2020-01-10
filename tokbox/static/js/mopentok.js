@@ -4,7 +4,6 @@ $(document).ready(function (e) {
     // var session;
     var api_key = apiKey;
     var token = accessToken;
-    // var token = "T1==cGFydG5lcl9pZD00NjQ4MzUzMiZzaWc9MDlkZTE5NzI4YzA1NjM2M2Q5MDkzZTgyYzQyMWQ5ODc4ZmZiMDQ2MjpzZXNzaW9uX2lkPTFfTVg0ME5qUTRNelV6TW41LU1UVTNPREUwTkRVd01UY3hOMzU1VkVKYUsySlJkbVV5ZVhSeVFsVTRXSGxHTjJWVlRrMS1mZyZjcmVhdGVfdGltZT0xNTc4MTU0ODkzJnJvbGU9c3Vic2NyaWJlciZub25jZT0xNTc4MTU0ODkzLjcwNzE3MjQwNzc2Nzg=";
     var publisher;
 
 
@@ -109,6 +108,7 @@ $(document).ready(function (e) {
         var sub_properties = {
             width: '100%',
             height: '100%',
+            fitMode: "contain",
         };
         var subscriber = session.subscribe(stream, 'video', sub_properties);
         $('.connection-info').attr('data-status', "publishing");

@@ -1,0 +1,50 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+
+    <section class="courses-listing bg-gray">
+        <div class="container">
+            <div class="courses-table">
+                <div class="courses-table-body">
+                    <table class="table table-hover table-responsive-xl">
+                        <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Start Date</th>
+                            <th>Duration</th>
+                            <th>Level</th>
+                            <th>Location</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for course in courses_list %}
+                            <tr>
+                                <td><a href="{% url 'course_details' course.id %}" class="no-anchor-style">
+                                    {{ course.name }}
+                                    <div class="badge badge-primary">New</div>
+                                </a>
+                                </td>
+                                <td>{{ course.time_start }}</td>
+                                <td>{{ course.time_end }}</td>
+                                <td>IN progress...</td>
+                                <td>IN progress...</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span
+                            aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span
+                            aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}

@@ -23,6 +23,9 @@ SECRET_KEY = 'kpwj)2-d*++!su&x4r-f#b2+!m5rx&^1l971wxr!ik0f+rsbxt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -40,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tokbox',
+    'channels',
+    'chat',
     'crispy_forms',
     'allauth',
     'allauth.account',
@@ -61,7 +66,7 @@ ROOT_URLCONF = 'opentok_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,5 +111,17 @@ SITE_ID = 1
 
 STATIC_URL = '/statics/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = "/session_view"
+LOGIN_REDIRECT_URL = "/"
+# Channels
+ASGI_APPLICATION = 'opentok_django.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

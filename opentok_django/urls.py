@@ -12,14 +12,16 @@ Class-based views
 Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
 from tokbox import urls
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path(r'', include(urls)),
-    path('accounts/', include('allauth.urls')),
-]
+                  path('admin/', admin.site.urls),
+                  path(r'', include(urls)),
+                  path('accounts/', include('allauth.urls')),
+                  path('chat/', include('chat.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

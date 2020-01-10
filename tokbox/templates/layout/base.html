@@ -17,10 +17,60 @@
     <meta name="author" content="AlaaAlqadi">
 
     <!-- Le styles -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
-          type="text/css">
-    <link rel="stylesheet" id="maincss" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+
+    <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"/>
+    <link rel="mask-icon" type=""
+          href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg"
+          color="#111"/>
+    <link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet'
+          type='text/css'>
+
+    <script src="https://use.typekit.net/hoy3lrg.js"></script>
+    <script>try {
+        Typekit.load({async: true});
+    } catch (e) {
+    }</script>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+
+    <!-- Swiper carousel-->
+    <link rel="stylesheet" href="{% static 'vendor/swiper/css/swiper.css' %}">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/logo.png' %}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <!-- Theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.default.css' %}"
+          id="theme-stylesheet">
     {% block base_css %}
     {% endblock %}
 </head>
@@ -32,18 +82,96 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/swiper/js/swiper.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/jquery.cookie/jquery.cookie.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/opentok.min.js' %}"></script>
+<script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
 <script src="{% static "js/mopentok.js" %}"></script>
 <script src="{% static "js/script.js" %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/front.js' %}"></script>
+<script src="{% static 'js/chatApp.js' %}"></script>
 
 <script type="text/javascript">
     var apiKey = '{{ api_key }}';
     var sessionId = '{{ session_id }}';
     var accessToken = '{{ access_token }}';
+</script>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script>$(".messages").animate({scrollTop: $(document).height()}, "fast");
+
+$("#profile-img").click(function () {
+    $("#status-options").toggleClass("active");
+});
+
+$(".expand-button").click(function () {
+    $("#profile").toggleClass("expanded");
+    $("#contacts").toggleClass("expanded");
+});
+
+$("#status-options ul li").click(function () {
+    $("#profile-img").removeClass();
+    $("#status-online").removeClass("active");
+    $("#status-away").removeClass("active");
+    $("#status-busy").removeClass("active");
+    $("#status-offline").removeClass("active");
+    $(this).addClass("active");
+
+    if ($("#status-online").hasClass("active")) {
+        $("#profile-img").addClass("online");
+    } else if ($("#status-away").hasClass("active")) {
+        $("#profile-img").addClass("away");
+    } else if ($("#status-busy").hasClass("active")) {
+        $("#profile-img").addClass("busy");
+    } else if ($("#status-offline").hasClass("active")) {
+        $("#profile-img").addClass("offline");
+    } else {
+        $("#profile-img").removeClass();
+    }
+    ;
+
+    $("#status-options").removeClass("active");
+});
+
+function newMessage() {
+    message = $(".message-input input").val();
+    if ($.trim(message) == '') {
+        return false;
+    }
+    $('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+    $('.message-input input').val(null);
+    $('.contact.active .preview').html('<span>You: </span>' + message);
+    $(".messages").animate({scrollTop: $(document).height()}, "fast");
+};
+
+$('.submit').click(function () {
+    newMessage();
+});
+
+$(window).on('keydown', function (e) {
+    if (e.which == 13) {
+        newMessage();
+        return false;
+    }
+});
+//# sourceURL=pen.js
 </script>
 {% block base_js %}
 {% endblock %}

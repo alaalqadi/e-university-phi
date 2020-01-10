@@ -1,0 +1,237 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+    <section class="hero hero-home">
+        <div class="swiper-container hero-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div style="background: url({% static 'img/site-images/hero-img-2.jpg' %});"
+                         class="hero-content has-overlay-dark">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h1>Welcome to <span>University</span></h1>
+                                    <p class="hero-text pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation.</p>
+                                    <div class="CTAs"><a href="{% url 'account_signup' %}" class="btn btn-primary">Apply
+                                        now</a><a href="#"
+                                                  class="btn btn-outline-light">Read
+                                        more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div style="background: url({% static 'img/site-images/hero-img-1.jpg' %});"
+                         class="hero-content has-overlay-dark">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h1>Welcome to <span>University</span></h1>
+                                    <p class="hero-text pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation.</p>
+                                    <div class="CTAs"><a href="{% url 'account_signup' %}" class="btn btn-primary">Apply
+                                        now</a><a href="#"
+                                                  class="btn btn-outline-light">Read
+                                        more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination-->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <!-- Info Boxes Section-->
+    <section class="info-boxes">
+        <div class="container">
+            <div class="row"><a href="#"
+                                style="background: url({% static 'img/site-images/boxes-img-1.jpg' %});"
+                                class="info-box cyan col-lg-4">
+                <div class="info-box-content">
+                    <h3 class="text-uppercase">Programs</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+            </a><a href="#"
+                   style="background: url({% static 'img/site-images/boxes-img-2.jpg' %});"
+                   class="info-box orange col-lg-4">
+                <div class="info-box-content">
+                    <h3 class="text-uppercase">Affordability</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+            </a><a href="#"
+                   style="background: url({% static 'img/site-images/boxes-img-3.jpg' %});"
+                   class="info-box red col-lg-4">
+                <div class="info-box-content">
+                    <h3 class="text-uppercase">Certification</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+            </a></div>
+        </div>
+    </section>
+    <!-- Intro Section-->
+    <section class="intro">
+        <div class="container text-center">
+            <header>
+                <h2><small>We are rock stars...</small>Welcome to university</h2>
+            </header>
+            <div class="row">
+                <p class="col-lg-8 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="signature mx-auto"><img
+                    src="{% static 'img/site-images/signature.png' %}"
+                    alt="..."
+                    class="img-fluid"></div>
+            <div class="author"><strong>katya Henry</strong><span>University Grandmaster</span></div>
+        </div>
+    </section>
+    <!-- Tour Section-->
+    <section class="tour bg-gray">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-4">
+                    <div class="video"><a href="https://www.youtube.com/watch?v=TqnCbqUg-tc" data-lity><img
+                            src="{% static 'img/site-images/tour-bg.jpg' %}"
+                            alt="...">
+                        <div class="overlay d-flex align-items-center justify-content-center"><img
+                                src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/play.svg" alt="...">
+                        </div>
+                    </a></div>
+                </div>
+                <div class="col-lg-8 text">
+                    <header>
+                        <h2><small>Discover more about us</small>Take a tour</h2>
+                    </header>
+                    <p class="h4">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                        consequat</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    <a href="{% url 'account_signup' %}" class="btn btn-primary">Apply now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Statistics Section-->
+    <section class="statistics pt-0 pb-0 bg-primary has-pattern">
+        <div class="container text-center">
+            <div class="row">
+                <div class="item col-lg-3 col-md-6"><strong>2019</strong>
+                    <p class="txt1">Year Found</p>
+                </div>
+                <div class="item col-lg-3 col-md-6"><strong>{{ instructors_count }}</strong>
+                    <p class="txt1">Qualified Teachers</p>
+                </div>
+                <div class="item col-lg-3 col-md-6"><strong>{{ students_count }}</strong>
+                    <p class="txt1">Students</p>
+                </div>
+                <div class="item col-lg-3 col-md-6"><strong>50</strong>
+                    <p class="txt1">Awards Winner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Events Section-->
+    <section class="events">
+        <div class="container">
+            <header class="text-center">
+                <h2><small>All About events updates</small>Upcoming Events</h2>
+                <div class="row text-center">
+                    <p class="col-lg-8 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                </div>
+            </header>
+            <div class="swiper-container events-slider pb-5">
+                <div class="swiper-wrapper">
+                    {% for event in events %}
+                        <div class="swiper-slide">
+                            <div class="event row align-items-center align-items-stretch">
+                                <div class="col-lg-6 pr-lg-0">
+                                    <div class="image"><img
+                                            src="{{ MEDIA_URL }}{{ event.image.url }}"
+                                            alt="">
+                                        <div class="overlay d-flex align-items-end">
+                                            <div class="date">
+                                                <strong><span>{{ event.time_start|date:"SHORT_DATE_FORMAT" }}</span></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 pl-lg-0">
+                                    <div class="text bg-gray d-flex align-items-center">
+                                        <div class="text-inner">
+                                            <h4>{{ event.name }}</h4>
+                                            <p>{{ event.description }}</p>
+                                            <a href="#" class="btn btn-outline-primary">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <!-- Add Pagination-->
+                <div class="swiper-pagination mt-5"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Divider Section-->
+    <section style="background: url({% static 'img/site-images/divider-bg.jpg' %}) fixed;"
+             class="divider has-overlay-darker">
+        <div class="container">
+            <h2>Become a teacher</h2>
+            <div class="row">
+                <p class="col-lg-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco
+                    laboris nisi</p>
+            </div>
+            <div class="CTAs"><a href="{% url 'account_signup' %}" class="btn btn-primary">Apply now</a><a href="#"
+                                                                                                           class="btn btn-outline-light">Learn
+                more</a></div>
+        </div>
+    </section>
+    <!-- Testimonials Section-->
+    <section class="testimonials">
+        <div class="container text-center">
+            <header>
+                <h2><small>Our Students' Feedbacks</small>Student Testimonials</h2>
+            </header>
+            <div class="swiper-container testimonials-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="row">
+                                <p class="feedback col-lg-8 mx-auto">At vero eos et accusamus et iusto odio dignissimos
+                                    ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+                                    et
+                                    quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                            </div>
+                            <div class="user d-flex align-items-center justify-content-center">
+                                <div class="avatar"><img
+                                        src="{% static 'img/site-images/avatar.jpg' %}"
+                                        alt="Marco Antonio" class="img-fluid"></div>
+                                <div class="title"><strong class="text-uppercase">Marco Antonio</strong><span>Gravida ultrices</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination-->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

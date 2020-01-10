@@ -1,0 +1,89 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+    <section class="hero hero-page">
+        <div style="background: url(statics/img/site-images/courses-banner.jpg)"
+             class="hero-banner"></div>
+        <div class="container">
+            <h1>Courses</h1>
+            <div class="row">
+                <p class="col-lg-8">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                    praesentium
+                    voluptatum deleniti atque corrupti quos.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Course Listing Section-->
+    <section class="courses-listing bg-gray pt-0">
+        <div class="courses-search">
+            <div class="container">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="search" name="search" placeholder="Type any keyword and enter search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <nav class="nav nav-pills nav-justified d-flex justify-content-center"><a href="#"
+                                                                                      class="nav-link active">All</a><a
+                    href="#" class="nav-link">Trending</a><a href="#" class="nav-link">Popular</a><a href="#"
+                                                                                                     class="nav-link">Free</a><a
+                    href="#" class="nav-link">Premium</a></nav>
+            <div class="row">
+                {% for course in courses %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="course">
+                            <div class="course-image"><img
+                                    src="statics/img/site-images/course-img-1.jpg"
+                                    alt="Photoshop Essentials">
+                                <div class="overlay flex-column d-flex align-items-center justify-content-center">
+                                    <div class="instructor-avatar"><img
+                                            src="statics/img/site-images/avatar.jpg"
+                                            alt="Richard Vardy" class="img-fluid"></div>
+                                    <div class="instructor-name"><a href="#" class="no-anchor-style"><strong>Richard
+                                        Vardy</strong></a></div>
+                                    <ul class="instructor-rate list-inline">
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                    <a href="{% url 'course_details' course.pk %}" class="watch-btn"><i
+                                            class="fa fa-eye"> </i>Watch Now</a>
+                                </div>
+                            </div>
+                            <div class="course-header pb-1"><a href="course-detail.html" class="no-anchor-style">
+                                <h3 class="h5">{{ course.name }}</h3></a>
+                                {#                                <div class="d-flex align-items-center justify-content-between">#}
+                                {#                                </div>#}
+                            </div>
+                            <div class="course-body">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                    laudantium</p>
+                            </div>
+                            <hr>
+                            <div class="course-footer d-flex align-items-center justify-content-between">
+                                <div class="user"><i class="icon-users"></i><span>340</span></div>
+                                <div class="comments"><i class="icon-chat"></i><span>340</span></div>
+                                <div class="duration"><i class="icon-clock-1"></i><span>10 weeks</span></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span
+                            aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span
+                            aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
