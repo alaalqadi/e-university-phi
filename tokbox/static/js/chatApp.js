@@ -7,10 +7,19 @@ $(document).ready(function () {
     var chatSocket = new ReconnectingWebSocket(
         'ws://' + window.location.host + '/ws/session_view/' + roomNumber + '/');
 
+    chatSocket.onopen = function (e) {
+        fetchMessages();
+    }
+
     chatSocket.onmessage = function (e) {
         var data = JSON.parse(e.data);
-        var message = data['message'];
-        document.querySelector('#chat-log').value += (message + '\n');
+        if (data['command'] === 'messages') {
+            for (let i = 0; i < data['messages'].length; i++) {
+                createMessage(data['messages'][i]);
+            }
+        } else if (data['command'] === 'new_message') {
+            createMessage(data['message']);
+        }
     };
 
     chatSocket.onclose = function (e) {
@@ -25,13 +34,39 @@ $(document).ready(function () {
     };
 
     document.querySelector('#chat-message-submit').onclick = function (e) {
-        var messageInputDom = document.querySelector('#chat-message-input');
+        var messageInputDom = document.getElementById('chat-message-input');
         var message = messageInputDom.value;
-        chatSocket.send(JSON.stringify({
-            'message': message,
-            'command': 'fetch_messages'
-        }));
-
+        if (message) {
+            chatSocket.send(JSON.stringify({
+                'command': 'new_message',
+                'message': message,
+                'from': username
+            }));
+        } else {
+            return false;
+        }
         messageInputDom.value = '';
     };
+
+    function fetchMessages() {
+        chatSocket.send(JSON.stringify({'command': 'fetch_messages'}));
+    }
+
+    function createMessage(data) {
+        var author = data['author'];
+        var msgListTag = document.createElement('li');
+        var imgTag = document.createElement('img');
+        var pTag = document.createElement('p');
+        pTag.textContent = data.content;
+        imgTag.src = 'http://emilcarlsson.se/assets/mikeross.png';
+
+        if (author === username) {
+            msgListTag.className = 'sent';
+        } else {
+            msgListTag.className = 'replies';
+        }
+        msgListTag.appendChild(imgTag);
+        msgListTag.appendChild(pTag);
+        document.querySelector('#chat-log').appendChild(msgListTag);
+    }
 });

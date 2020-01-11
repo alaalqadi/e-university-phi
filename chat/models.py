@@ -8,8 +8,8 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.author.get_full_name()
+        return self.author.username
 
     @staticmethod
     def last_10_messages():
-        return Message.objects.order_by('-timestamp').all()[:30]
+        return Message.objects.order_by('timestamp').all()[:30]

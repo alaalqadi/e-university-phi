@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'tokbox.context_processors.get_profile_type',
+                'tokbox.context_processors.get_user_username_globally',
             ],
         },
     },
