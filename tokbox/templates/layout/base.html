@@ -19,10 +19,6 @@
     <!-- Le styles -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!--===============================================================================================-->
-
-    <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
-    <script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
-    <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
     <meta charset='UTF-8'>
     <meta name="robots" content="noindex">
     <link rel="shortcut icon" type="image/x-icon"
@@ -71,6 +67,7 @@
     <!-- Theme stylesheet-->
     <link rel="stylesheet" href="{% static 'css/style.default.css' %}"
           id="theme-stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/viewer.css' %}">
     {% block base_css %}
     {% endblock %}
 </head>
@@ -107,14 +104,32 @@
     var sessionId = '{{ session_id }}';
     var accessToken = '{{ access_token }}';
     var username = '{{ username }}';
+
+    var $chatbox = $('.chatbox');
+    var $chatboxTitle = $('.chatbox__title');
+    var $chatboxTitleClose = $('.chatbox__title__close');
+    $chatboxTitle.on('click', function () {
+        $chatbox.toggleClass('chatbox--tray');
+    });
+    $chatboxTitleClose.on('click', function (e) {
+        $chatbox.addClass('chatbox--closed');
+    });
+    $chatbox.on('transitionend', function () {
+        if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
+    });
 </script>
 <script src="{% static 'js/opentok.min.js' %}"></script>
 <script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
 <script src="{% static "js/mopentok.js" %}"></script>
-<script src="{% static "js/script.js" %}" type="text/javascript" charset="utf-8"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/front.js' %}"></script>
 <script src="{% static 'js/chatApp.js' %}"></script>
+<script src="{% static 'js/pdf.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/viewer.js' %}"></script>
+<!--===============================================================================================-->
+
+<script src="{% static "js/script.js" %}" type="text/javascript" charset="utf-8"></script>
 
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
 {% block base_js %}
