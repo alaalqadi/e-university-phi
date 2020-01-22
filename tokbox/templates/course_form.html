@@ -1,7 +1,7 @@
 {% extends 'layout/layout.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <form method="POST" class="post-form">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {% crispy form %}
     </form>

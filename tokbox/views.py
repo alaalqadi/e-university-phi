@@ -10,6 +10,7 @@ from tokbox.models import Instructor, Student, Course, Event
 
 @login_required
 def session_view(request, course_id=None):
+    course = Course.objects.get(id=course_id)
     return render(request, 'sessionScreen.html', locals())
 
 
@@ -40,33 +41,24 @@ def course_details(request, pk):
 def course_add(request):
     instance = Course()
     # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = CourseForm(request.POST, instance=instance)
-        # check whether it's valid:
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('courses_list'))
-    else:
-        form = CourseForm()
+    # create a form instance and populate it with data from the request:
+    form = CourseForm(request.POST or None, request.FILES or None, instance=instance)
+    # check whether it's valid:
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('courses_list'))
     return render(request, 'course_form.html', locals())
 
 
 @login_required
 def course_edit(request, pk):
     instance = get_object_or_404(Course, pk=pk)
-    if request.method == "POST":
-        # if this is a POST request we need to process the form data
-        # create a form instance and populate it with data from the request:
-        form = CourseForm(request.POST, instance=instance)
-        course = form.save(commit=False)
-        course.save()
-        # check whether it's valid:
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('courses_list'))
-    else:
-        form = CourseForm(instance=instance)
+    # if this is a POST request we need to process the form data
+    # create a form instance and populate it with data from the request:
+    form = CourseForm(request.POST or None, request.FILES or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('courses_list'))
     return render(request, 'course_form.html', locals())
 
 

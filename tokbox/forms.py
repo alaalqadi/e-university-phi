@@ -9,7 +9,7 @@ from tokbox.models import Course
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['name', 'time_end', 'days', 'description', 'what_you_will_learn', 'requirements']
+        fields = ['name', 'time_end', 'days', 'description', 'what_you_will_learn', 'requirements', 'course_slides']
 
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
@@ -23,6 +23,7 @@ class CourseForm(forms.ModelForm):
                     Div("description"),
                     Div("what_you_will_learn"),
                     Div("requirements"),
+                    Div("course_slides"),
                     css_class="col-6 offset-3"),
                 css_class="row"),
             Div(

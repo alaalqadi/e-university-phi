@@ -62,6 +62,7 @@ class Course(models.Model):
     description = models.TextField(null=True)
     what_you_will_learn = models.TextField(null=True)
     requirements = models.TextField(null=True)
+    course_slides = models.FileField(upload_to='media', verbose_name="Slides", null=True)
 
     class Meta:
         app_label = 'tokbox'
