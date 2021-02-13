@@ -1,6 +1,6 @@
 dj-database-url==0.4.0
 Django==2.2
-gunicorn==19.4.5
+gunicorn==19.5.0
 whitenoise==2.0.6
 opentok>=2.10.0
 django-allauth==0.39.0
